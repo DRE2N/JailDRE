@@ -1,0 +1,10 @@
+name: JailDRE
+main: de.erethon.jaildre.JailDRE
+version: ${project.version}
+api-version: 1.13
+author: Daniel Saukel
+description: ${project.description}
+website: ${project.url}
+commands:
+  jail:
+    description: Imprisons a player.
