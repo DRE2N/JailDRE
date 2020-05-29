@@ -130,6 +130,9 @@ public class JailDRE extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
+        if (player.isOp()) {
+            return;
+        }
         int time = getJailTime(player);
         if (time <= 0) {
             return;
