@@ -123,7 +123,7 @@ public class JailDRE extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         int time = getJailTime(player);
         if (time > 0) {
-            jail(player, time);
+            getServer().getScheduler().runTaskLater(this, () -> jail(player, time), 1L);
         }
     }
 
