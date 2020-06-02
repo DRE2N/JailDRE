@@ -151,12 +151,12 @@ public class JailDRE extends JavaPlugin implements Listener {
 
     class Tick extends BukkitRunnable {
 
-        int sec, min;
+        int time;
 
         @Override
         public void run() {
             boolean stopTick = true;
-            sec++;
+            time++;
 
             for (int i = 0; i < playerCache.length; i++) {
                 if (playerCache[i] == null) {
@@ -167,20 +167,15 @@ public class JailDRE extends JavaPlugin implements Listener {
                     continue;
                 }
 
-                if (sec == 59) {
-                    if (!posChanged(i) && min == 4) {
+                if (time == 59) {
+                    if (!posChanged(i)) {
                         playerCache[i].kickPlayer("Du darfst im Gef\u00e4ngnis nicht AFK sein.");
                         continue;
                     }
                     sendTime(playerCache[i], --timeCache[i]);
                     setJailTime(playerCache[i], timeCache[i]);
-                    sec = 0;
-                    if (min == 4) {
-                        min = 0;
-                    } else {
-                        min++;
-                    }
-                    stopTick = timeCache[i] <= 0;
+                    time = 0;
+                    stopTick = timeCache[i] == 0;
 
                 } else {
                     sendTime(playerCache[i], timeCache[i]);
